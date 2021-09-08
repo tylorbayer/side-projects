@@ -2,10 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-# https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page1/?filter=#link
-if __name__ == "__main__":
-    reviews = []
 
+def scrapeReviews():
+    reviews = []
+    
     for i in range(1,6):
         page = requests.get(f'https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page{i}/?filter=#link')
         soup = BeautifulSoup(page.content, 'html.parser')
@@ -33,5 +33,16 @@ if __name__ == "__main__":
                 'review': review
             })
 
+    return reviews
+
+
+# https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page1/?filter=#link
+if __name__ == "__main__":
+    reviews = scrapeReviews()
+
     # Just wanted to scrape the data for fun... only printing the first 3 reviews (not the best 3)
     print(json.dumps(reviews[:3], indent=4))
+
+    # TODO: create and finish the processReviews function
+    # bestReviews = processReviews(reviews)
+    # print(json.dumps(bestReviews, indent=4))
