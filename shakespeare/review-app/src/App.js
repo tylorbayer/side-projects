@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 function App() {
+  axios
+    .get('https://shakespeare.podium.com/api/reviews', {headers: { 'x-api-key': 'H3TM28wjL8R4#HTnqk?c'}})
+    .then(response => {
+      console.log(response)
+    })
+
   return (
     <div className="App">
       <header className="App-header">

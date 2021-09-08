@@ -11,7 +11,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ../review-app/src:/review-app/src
+      - ../review-app:/review-app
       - /review-app/node_modules
     working_dir: /review-app
     command: yarn start
