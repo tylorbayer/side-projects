@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  webscraper:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    image: tylorbayer/webscraper
+    command: python scrape.py

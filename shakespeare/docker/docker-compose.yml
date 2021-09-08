@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  review-app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    image: tylorbayer/review-app
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - 3000:3000
+    volumes:
+      - ../review-app/src:/review-app/src
+      - /review-app/node_modules
+    working_dir: /review-app
+    command: yarn start
